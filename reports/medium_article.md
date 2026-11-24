@@ -1,85 +1,130 @@
+
 # Is South Africa’s Economy Really Recovering? A Data-Driven Investigation
 
 *Beyond GDP: What employment, inflation, population growth and purchasing power reveal about South Africa’s economic recovery.*
 
-South Africa's economy is larger than it was before the COVID-19 pandemic. But does that necessarily mean South Africans are better off?
+**Publication:** Medium
 
-Economic recovery is often discussed through gross domestic product (GDP). While GDP is an important measure of economic performance, it does not tell the entire story.
+**Status:** Published
 
-An economy can grow while unemployment remains high, population growth outpaces economic expansion, and salaries struggle to keep up with rising consumer prices.
+**Publication date:** 25 November 2026
 
-This raises an important question:
+**Published article:** [Read on Medium](https://medium.com/@shadrackherot/is-south-africas-economy-really-recovering-a-data-driven-investigation-3565d666994e)
 
-**Has South Africa recovered economically, or has it simply recovered statistically in terms of aggregate output?**
 
-To investigate this question, I analysed official Statistics South Africa data spanning 2010 to 2026, focusing on five dimensions of economic recovery:
+South Africa's economy is larger than it was before the COVID-19 pandemic. Yet economic output per person remains lower, unemployment is higher, consumer prices have increased substantially, and average formal-sector purchasing power has barely improved.
 
-- Real GDP
-- Real GDP per capita
+How do we reconcile these seemingly conflicting economic outcomes?
+
+By the second quarter of 2026, South Africa's real GDP was 2.24% above its pre-pandemic level. However, real GDP per capita in 2025 remained 5.36% below its 2019 level.
+
+These two findings illustrate why measuring economic recovery through aggregate GDP alone can be misleading.
+
+An economy can expand while struggling to create sufficient employment, keep pace with population growth and improve purchasing power.
+
+I wanted to understand whether South Africa's economic recovery extends beyond aggregate production.
+
+Using official Statistics South Africa data, Python and statistical modelling, I examined five dimensions of recovery:
+
+- Real economic output
+- Economic output per person
 - Employment and unemployment
-- Consumer price inflation
+- Consumer prices
 - Real earnings and purchasing power
 
-Using Python, statistical analysis and data visualisation, I examined whether South Africa's economic recovery extends beyond aggregate economic output.
+The results reveal a recovery that is far more uneven than aggregate GDP figures suggest.
+
+## Data and Methodology
+
+The investigation uses official Statistics South Africa economic datasets covering periods between 2010 and 2026.
+
+The analysis combines descriptive statistics, inflation adjustments, population-adjusted economic indicators, regression analysis, statistical inference and historical growth trend extrapolation.
+
+Pre-pandemic observations from 2019 serve as the primary recovery benchmarks. The latest available observations differ across datasets because economic indicators are published at different frequencies and with different reporting schedules.
+
+All data transformations, calculations, statistical models and visualisations are documented in a reproducible Python notebook available through the accompanying GitHub repository.
 
 ## 1. South Africa's Economy Has Recovered — But How Strongly?
 
-The COVID-19 pandemic caused a severe disruption to South Africa's economy. However, the years that followed saw aggregate economic output gradually recover.
+The COVID-19 pandemic caused a severe contraction in South Africa's economic output. The years that followed saw a gradual recovery.
 
-**[Insert Figure 01 — South Africa's Real GDP, 2010–2026]**
+**[Insert Figure 01]**
 
-By the second quarter of 2026, South Africa's real GDP was approximately **2.24% higher than in the fourth quarter of 2019**.
+*Figure 1: South Africa's quarterly real GDP, 2010–2026. Source: Statistics South Africa, P0441. Author's calculations and visualisation.*
 
-From an aggregate output perspective, the economy has recovered beyond its pre-pandemic level.
+By the second quarter of 2026, real GDP was approximately **2.24% higher than in the fourth quarter of 2019**.
 
-However, recovering lost output is not necessarily the same as achieving strong economic growth.
+From an aggregate output perspective, South Africa has surpassed its pre-pandemic economic level.
 
-### Has Economic Growth Improved?
+However, recovering lost output is not the same as establishing a stronger growth trajectory.
 
-I compared average quarterly GDP growth across two periods:
+### Has economic growth improved?
+
+I compared average quarterly real GDP growth across two periods, excluding the pandemic disruption and initial rebound years of 2020 and 2021.
 
 | Period | Average quarterly growth |
 |---|---:|
-| Pre-pandemic: 2010–2019 | 0.421% |
-| Post-pandemic: 2022–2026 Q2 | 0.252% |
+| 2010–2019 | 0.421% |
+| 2022–2026 Q2 | 0.252% |
 
-**[Insert Figure 02 — GDP Growth Comparison]**
+**[Insert Figure 02]**
 
-Although average growth was lower in the post-pandemic period, statistical testing using heteroskedasticity and autocorrelation consistent (HAC) inference produced a p-value of 0.210.
+*Figure 2: Average quarterly real GDP growth before and after the pandemic disruption.*
 
-The difference was therefore not statistically significant at the conventional 5% significance level.
+The estimated difference was −0.169 percentage points.
 
-This does not prove that growth remained unchanged. Rather, the available evidence is insufficient to establish a statistically significant difference between the selected periods.
+To assess whether this difference was statistically significant, I fitted a regression model using heteroskedasticity and autocorrelation consistent (HAC) standard errors.
 
-**[Insert Figure 03 — GDP Recovery Index]**
+The results were:
 
-South Africa has recovered its pre-pandemic aggregate output, but that alone provides limited insight into the strength and sustainability of its recovery.
+- p-value: 0.210
+- 95% confidence interval: [−0.433, 0.095] percentage points
 
-### What If Historical Growth Trends Had Continued?
+Although average quarterly growth was lower in the later period, the difference was not statistically significant at the conventional 5% significance level.
 
-To provide additional context, I extrapolated three historical GDP growth trends.
+This does not establish that economic growth remained unchanged. It means the available evidence is insufficient to conclude that average growth differed statistically between the selected periods under the specified model.
 
-**[Insert Figure 04 — Actual GDP vs Historical Growth Trajectories]**
+**[Insert Figure 03]**
 
-Depending on the historical period selected, actual GDP was below the extrapolated trajectory by:
+*Figure 3: South Africa's real GDP recovery index, with 2019 Q4 as the reference period.*
 
-- **9.09%** using the 2010–2019 trend.
-- **5.21%** using the 2013–2019 trend.
-- **4.34%** using the 2015–2019 trend.
+South Africa has recovered its pre-pandemic aggregate output. Whether it has established a stronger economic growth path is a different question.
 
-These estimates are not causal measurements of economic damage caused by the pandemic. They illustrate how actual economic output compares with alternative historical growth benchmarks.
+### What if historical growth trends had continued?
 
-The magnitude of the gap depends on the benchmark selected, but all three comparisons place actual GDP below their extrapolated trajectories.
+To provide additional context, I fitted three log-linear GDP trend models using different pre-pandemic estimation periods.
 
-## 2. A Growing Economy Does Not Necessarily Mean Greater Prosperity Per Person
+Each historical trend was extrapolated to the second quarter of 2026 and compared with actual economic output.
 
-One of the limitations of aggregate GDP is that it does not account for population growth.
+**[Insert Figure 04]**
 
-If an economy grows more slowly than its population, average economic output per person can decline even while total GDP increases.
+*Figure 4: Actual real GDP compared with extrapolated pre-pandemic growth trajectories.*
 
-To investigate this, I calculated South Africa's real GDP per capita using annual real GDP and population estimates.
+| Historical estimation period | Actual GDP relative to extrapolated trend |
+|---|---:|
+| 2010–2019 | −9.09% |
+| 2013–2019 | −5.21% |
+| 2015–2019 | −4.34% |
 
-**[Insert Figure 05 — Real GDP vs Real GDP per Capita]**
+All three historical benchmarks place actual GDP below their extrapolated trajectories.
+
+The magnitude of the gap depends considerably on the estimation period selected.
+
+These models are descriptive benchmarks, not reliable forecasts or causal estimates of economic damage. Residual autocorrelation, particularly in the longest estimation window, also limits conventional statistical inference from the trend models.
+
+Nevertheless, they provide useful context: recovering pre-pandemic output does not necessarily mean returning to the economic trajectory that preceded the pandemic.
+
+## 2. A Larger Economy, but Less Output Per Person
+
+Aggregate GDP does not account for changes in population size.
+
+When population growth exceeds economic growth, average economic output per person can decline even as total production increases.
+
+I calculated South Africa's real GDP per capita using annual real GDP and estimated population figures.
+
+**[Insert Figure 05]**
+
+*Figure 5: South Africa's real GDP and real GDP per capita, indexed to 2019.*
 
 Between 2019 and 2025:
 
@@ -89,23 +134,25 @@ Between 2019 and 2025:
 | Estimated population | +7.34% |
 | Real GDP per capita | −5.36% |
 
-Real GDP per capita declined from approximately **R120,049 in 2019 to R113,619 in 2025**, measured in constant 2022 prices.
+Measured in constant 2022 prices, estimated real GDP per capita declined from approximately R120,049 in 2019 to R113,619 in 2025.
 
-In other words, South Africa produced more economic output overall, but less economic output per person.
+South Africa produced more economic output overall, but less output per person.
 
-GDP per capita is not a direct measure of household income, nor does it capture income inequality. Nevertheless, it provides an important perspective that aggregate GDP alone cannot offer.
+GDP per capita is not equivalent to household income. It also does not account for how economic resources are distributed across society.
 
-The economy has grown, but its growth has not kept pace with population expansion.
+However, it provides an important perspective that aggregate GDP alone cannot offer.
 
-## 3. Has the Labour Market Really Recovered?
+**South Africa's economic expansion has not kept pace with population growth.**
 
-Employment is one of the most direct ways through which economic growth can improve people's lives.
+## 3. More Employment, but a Weaker Employment Ratio
 
-A growing economy should ideally create opportunities for an expanding working-age population.
+Employment is one of the most important channels through which economic growth can improve people's lives.
 
-Using the Quarterly Labour Force Survey, I compared South Africa's labour market in the third quarter of 2019 with the third quarter of 2026.
+Using the Quarterly Labour Force Survey, I compared South Africa's labour market in the third quarter of 2019 with the corresponding quarter of 2026.
 
-**[Insert Figure 06 — South Africa's Labour Market Recovery]**
+**[Insert Figure 06]**
+
+*Figure 6: South Africa's labour market recovery. Source: Statistics South Africa, Quarterly Labour Force Survey.*
 
 | Indicator | 2019 Q3 | 2026 Q3 |
 |---|---:|---:|
@@ -115,89 +162,99 @@ Using the Quarterly Labour Force Survey, I compared South Africa's labour market
 | Official unemployment rate | 29.1% | 33.7% |
 | Employment-to-population ratio | 42.4% | 39.7% |
 
-At first glance, the increase in employment appears encouraging.
+The number of employed people increased by approximately 2.84%.
 
-However, employment increased by only 2.84%, while the working-age population increased by approximately 9.96%.
+Over the same period, however, the working-age population increased by 9.96%.
 
-The economy has added employment, but not at a pace sufficient to maintain its pre-pandemic employment-to-population ratio.
+Consequently, the proportion of working-age South Africans who were employed declined.
 
-### The 1.17 Million Employment Gap
+### The 1.17 million employment gap
 
-I calculated how many people would have been employed in 2026 Q3 if South Africa had maintained its 2019 Q3 employment-to-population ratio.
+What would employment look like if South Africa had maintained its 2019 employment-to-population ratio?
 
-The benchmark suggests:
+Applying the 2019 Q3 employment ratio to the 2026 Q3 working-age population produces the following benchmark:
 
-- Expected employment: approximately 18.01 million.
-- Actual employment: approximately 16.84 million.
-- Employment shortfall relative to the benchmark: approximately 1.17 million.
+- Benchmark employment: 18.01 million
+- Actual employment: 16.84 million
+- Employment gap: approximately 1.17 million
 
-This does not mean that 1.17 million jobs were lost because of COVID-19, nor does it represent available vacancies.
+This is not an estimate of jobs lost because of COVID-19, nor does it represent available vacancies.
 
-It illustrates the scale of the difference between actual employment and the employment level implied by maintaining the pre-pandemic employment ratio.
+It measures the difference between actual employment and the employment level implied by maintaining the pre-pandemic employment ratio.
 
 South Africa has more employed people than in 2019, but a smaller proportion of its working-age population is employed.
 
-## 4. The Rising Cost of Living
+That distinction matters when assessing the inclusiveness of economic recovery.
 
-Economic recovery is not only about production and employment. It is also about what people can afford.
+## 4. What Happened to the Cost of Living?
 
-Using South Africa's historical Consumer Price Index, I examined how the general consumer price level changed between October 2019 and October 2026.
+Economic recovery is also about what people can afford.
 
-**[Insert Figure 07 — Cumulative Consumer Price Increase]**
+Using South Africa's historical headline Consumer Price Index, I examined changes in the general consumer price level between October 2019 and October 2026.
 
-Over this period, consumer prices increased by approximately **38.55%**.
+**[Insert Figure 07]**
 
-To put this into perspective, a representative basket of goods and services costing R1,000 in October 2019 would cost approximately R1,385.50 in October 2026, assuming its prices increased in line with headline CPI.
+*Figure 7: Cumulative consumer price increases relative to October 2019. Source: Statistics South Africa, P0141.*
 
-This is an illustration of the cumulative change in the general price level. Individual households may experience different price increases depending on their spending patterns.
+Over this period, the general consumer price level increased by approximately **38.55%**.
 
-An important distinction must also be made between inflation and the price level.
+A representative basket of goods and services costing R1,000 in October 2019 would therefore cost approximately R1,385.50 in October 2026 if its prices increased in line with headline CPI.
 
-When inflation decreases, prices generally continue increasing, but at a slower rate, provided inflation remains positive.
+Actual household experiences will differ depending on individual spending patterns.
 
-Lower inflation does not necessarily mean that goods and services have become cheaper.
+There is also an important distinction between inflation and the price level.
 
-This helps explain why improvements in inflation figures may not immediately translate into a noticeable reduction in household financial pressure.
+When inflation falls but remains positive, prices generally continue rising, only at a slower rate.
+
+Lower inflation does not necessarily mean lower prices.
+
+This distinction helps explain why improvements in inflation figures may not immediately translate into a noticeable reduction in household financial pressure.
 
 ## 5. Have Salaries Kept Pace With Inflation?
 
-Rising consumer prices raise another important question: have earnings increased sufficiently to compensate for inflation?
+Higher consumer prices make nominal salary increases difficult to interpret without accounting for purchasing power.
 
 Using Statistics South Africa's Quarterly Employment Statistics, I compared average monthly earnings in the formal non-agricultural sector between November 2019 and May 2026.
 
-**[Insert Figure 08 — Nominal vs Real Earnings]**
-
 Average monthly earnings increased from R22,500 to R30,611.
 
-At face value, this represents a substantial improvement.
+That represents a nominal increase of approximately 36%.
 
-However, after accounting for inflation:
+But how much of that increase remained after adjusting for inflation?
+
+**[Insert Figure 08]**
+
+*Figure 8: Nominal earnings growth compared with consumer price growth and inflation-adjusted earnings growth.*
 
 | Indicator | Cumulative change |
 |---|---:|
-| Nominal average earnings | +36.05% |
+| Nominal average monthly earnings | +36.05% |
 | Consumer prices | +35.58% |
-| Real average earnings | +0.35% |
+| Real average monthly earnings | +0.35% |
 
-Expressed in November 2019 purchasing power, the average May 2026 monthly earnings of R30,611 were equivalent to approximately R22,578.
+Expressed in November 2019 purchasing power, average monthly earnings of R30,611 in May 2026 were equivalent to approximately R22,578.
 
-That is an improvement of just R78 per month in inflation-adjusted terms compared with November 2019.
+That represents an inflation-adjusted difference of just R78 per month between the two observations.
 
-Over approximately six and a half years, average real earnings barely increased.
+Despite substantial nominal earnings growth, average purchasing power was almost unchanged in this comparison.
 
-These figures represent average earnings in the formal non-agricultural sector. They do not measure median earnings, informal-sector earnings or the wage growth experienced by individual employees.
+The result requires careful interpretation. These are average earnings in the formal non-agricultural sector, not median earnings or individual salary histories.
 
-Nevertheless, the comparison highlights an important economic reality:
+The observations also come from different calendar months, meaning seasonal earnings patterns, bonuses, overtime and changes in workforce composition may influence the comparison.
 
-**A substantial increase in nominal earnings does not necessarily translate into a substantial improvement in purchasing power.**
+Two observations cannot establish a continuous real earnings trend or demonstrate statistically significant wage stagnation.
+
+Nevertheless, the comparison illustrates why nominal salary increases alone provide an incomplete picture of purchasing power.
 
 ## 6. South Africa's Economic Recovery Scorecard
 
-Bringing together all five dimensions produces a more comprehensive picture of South Africa's economic recovery.
+Examining the five dimensions together provides a broader assessment of economic recovery.
 
-**[Insert Figure 09 — South Africa's Economic Recovery Scorecard]**
+**[Insert Figure 09]**
 
-| Economic indicator | Change |
+*Figure 9: South Africa's multidimensional economic recovery scorecard.*
+
+| Economic indicator | Change from selected pre-pandemic benchmark |
 |---|---:|
 | Real GDP | +2.24% |
 | Real GDP per capita | −5.36% |
@@ -205,65 +262,72 @@ Bringing together all five dimensions produces a more comprehensive picture of S
 | Consumer price level | +38.55% |
 | Real average monthly earnings | +0.35% |
 
-The indicators use different reference periods and measure different aspects of the economy. They should not be combined into a single numerical recovery score.
+The indicators use different reference periods, units and economic definitions. They should not be aggregated into a single numerical recovery score.
 
-However, together they reveal a consistent distinction between aggregate economic recovery and broader economic well-being.
+However, they reveal an important distinction between aggregate economic recovery and broader economic well-being.
 
-South Africa has recovered its pre-pandemic aggregate output, but:
+South Africa has surpassed its pre-pandemic aggregate output, while real output per person remains lower, employment growth has lagged behind working-age population growth, consumer prices have risen substantially, and average formal-sector purchasing power has changed very little between the selected earnings observations.
 
-- Real output per person remains lower.
-- Employment has not kept pace with working-age population growth.
-- Consumer prices have increased substantially.
-- Average formal-sector purchasing power has barely improved.
+## 7. Limitations of the Investigation
 
-## 7. What This Analysis Cannot Tell Us
+Economic well-being cannot be fully captured by five indicators.
 
-No single economic investigation can capture every dimension of national prosperity.
+This investigation does not directly measure poverty, household disposable income, income inequality, wealth distribution, household debt or access to public services.
 
-This analysis does not directly measure poverty, household disposable income, wealth inequality, household debt or access to public services.
+The population series was reconstructed using published annual population growth rates, which introduces approximation errors into the GDP per capita estimates.
 
-Population estimates used in the GDP per capita analysis also involve approximations based on published annual growth rates.
+The GDP growth comparison excludes 2020 and 2021. The HAC covariance estimator treats the retained observations as consecutive despite this calendar gap, which is a limitation of the statistical specification.
 
-Furthermore, the comparisons are primarily descriptive. They do not isolate the causal effects of COVID-19, government policies, electricity constraints or other economic developments.
+The historical GDP trajectories are sensitive to the selected estimation windows and should not be interpreted as causal counterfactuals.
 
-These limitations matter because economic outcomes are influenced by multiple interconnected factors.
+The earnings comparison is also limited by its sectoral coverage, different reference months and reliance on two observations.
 
-The objective is not to assign blame, but to assess recovery through several measurable economic indicators.
+More broadly, the analysis does not isolate the economic effects of COVID-19, government policies, electricity constraints or other domestic and international developments.
+
+Its purpose is to measure and contextualise economic recovery, rather than attribute its outcomes to particular causes.
 
 ## Conclusion: Is South Africa Really Recovering?
 
-The answer depends on how we define recovery.
+The answer depends on how recovery is defined.
 
-If recovery means returning to pre-pandemic aggregate economic output, then South Africa has recovered.
+If recovery means surpassing pre-pandemic aggregate economic output, then South Africa has recovered.
 
-If recovery means producing more economic output per person, expanding employment opportunities in line with population growth, and meaningfully improving purchasing power, the evidence is less encouraging.
+If it means increasing economic output per person, expanding employment opportunities in line with population growth and substantially improving purchasing power, the evidence is less encouraging.
 
-The findings support a conclusion of **uneven economic recovery**.
+The findings point towards **an uneven economic recovery**.
 
-Economic growth remains important, but its broader significance depends on whether it translates into improved economic opportunities and living conditions.
+Aggregate economic growth remains important, but it is not sufficient on its own to establish that economic conditions have improved broadly.
 
-Perhaps the question we should be asking is no longer simply:
-
-*Has South Africa's economy recovered?*
-
-But rather:
-
-**How can South Africa translate economic recovery into meaningful improvements in people's lives?**
+Perhaps the more important question is no longer whether South Africa's economy has recovered, but whether its recovery is translating into meaningful improvements in people's lives.
 
 ## About the Project
 
-This independent data analytics project was developed using official Statistics South Africa datasets, Python, statistical inference and data visualisation.
+This independent research project combines economic data analysis, statistical inference, regression modelling and data visualisation to investigate South Africa's economic recovery.
+
+The accompanying repository contains:
+
+- A reproducible Python analysis notebook
+- 11 processed economic datasets
+- Nine analytical visualisations
+- Statistical and numerical validation procedures
+- Research methodology and documentation
 
 **Technical tools:** Python, pandas, NumPy, Matplotlib, statsmodels, Jupyter Notebook and GitHub.
 
-**Data sources:**
+### Data Sources
 
-- Statistics South Africa — Quarterly GDP (P0441).
-- Statistics South Africa — Mid-year Population Estimates (P0302).
-- Statistics South Africa — Quarterly Labour Force Survey (P0211).
-- Statistics South Africa — Consumer Price Index (P0141).
-- Statistics South Africa — Quarterly Employment Statistics (P0277).
+All primary economic data were obtained from Statistics South Africa.
 
-The complete analysis, methodology, processed datasets and visualisations are available in the accompanying GitHub repository.
+- Gross Domestic Product (P0441)
+- Mid-year Population Estimates (P0302)
+- Quarterly Labour Force Survey (P0211)
+- Consumer Price Index (P0141)
+- Quarterly Employment Statistics (P0277)
 
-**GitHub repository:** [Insert repository link after publication]
+### Explore the Research
+
+The complete analysis, processed datasets, methodology and visualisations are available on GitHub.
+
+**GitHub:** https://github.com/ShadrackHero/sa-economic-recovery
+
+Readers are encouraged to explore the methodology, reproduce the analysis and critically engage with the findings.

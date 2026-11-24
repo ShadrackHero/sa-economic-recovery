@@ -1,3 +1,10 @@
+## Published Research Article
+
+This investigation is also available as a published Medium article, presenting the research findings, statistical methodology, economic interpretations and limitations.
+
+[Read the full article on Medium — Is South Africa's Economy Really Recovering? A Data-Driven Investigation](https://medium.com/@shadrackherot/is-south-africas-economy-really-recovering-a-data-driven-investigation-3565d666994e)
+
+
 # South Africa's Economic Recovery: A Data-Driven Investigation
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
@@ -151,7 +158,7 @@ sa-economic-recovery/
 │   └── processed/
 │
 ├── notebooks/
-│   └── 01_data_acquisition.ipynb
+│   └── 01_sa_economic_recovery_analysis.ipynb
 │
 ├── figures/
 │   ├── 01_sa_real_gdp_2010_2026.png
@@ -211,14 +218,14 @@ jupyter notebook
 Ensure the required source datasets are available in `data/raw/`, then open and execute:
 
 ```text
-notebooks/01_data_acquisition.ipynb
+notebooks/01_sa_economic_recovery_analysis.ipynb
 ```
 
 ## Research Documentation
 
 - [Research Methodology](reports/methodology.md)
 - [Key Research Findings](reports/key_findings.md)
-- [Medium Article Draft](reports/medium_article.md)
+- [![Medium](https://img.shields.io/badge/Medium-Read%20Article-black?logo=medium)](https://medium.com/@shadrackherot/is-south-africas-economy-really-recovering-a-data-driven-investigation-3565d666994e)
 - [Economic Recovery Scorecard Dataset](data/processed/sa_economic_recovery_scorecard.csv)
 
 ## Limitations
